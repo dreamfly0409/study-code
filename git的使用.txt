@@ -1,0 +1,58 @@
+git init 初始化一个项目git仓库
+
+git config --global user.name 'user'
+git config --global user.email '2637345454@qq.com'
+设置多个user.name 使用 git config --global --replace-all user.name "用户名"
+
+git的操作
+git add ./readme.md
+git add ./  添加所有的内容
+git commit --all -m "提交所有修改过得内容到仓库"  可以不经过git add 的操作
+git commit -m "注释说明"
+
+git status 查看文件此时的状态
+	modified： readme.md（绿色）表示已经保存在缓存区
+	modified： readme.md（红色）表示只是修改了文件，还没有到缓存区
+	没有表示并没有修改文件，或者已经提交到仓库了
+查看日志
+ git log
+ git log -oneline
+
+回退版本
+  Head 指向 --> 指向当前操作的文档
+  git reset --hard Head~0 回退到一个版本
+  git reset --hard Head~1 回退两个版本
+  git reset --hard Head~2 回退三个版本
+回退指定的版本
+git reset --hard 版本号
+git reflog   查看版本改变的记录
+
+分支
+git branch dev  创建dev分支
+git checkout dev  切换分支
+git merge dev 合并分支，把当前分支和dev分支合并，合并分支有冲突需要手动处理
+git branch 查看所有的分支，以及自己所在的分支
+
+git和GitHub的使用
+git push http地址 master   把数据传递到github仓库的master分支
+获取GitHub仓库的数据信息
+	(1)直接下载安装包
+	(2)拉取github的文件
+		1.在本地 git init 初始化一个仓库
+		2.git pull http地址 master
+	(3)git clone http地址 ，会得到远程仓库相同的数据，如果多次执行会覆盖本地的
+	内容（一般用于拉取第一次）
+ssh上传代码的方式
+一，公钥
+二，私钥
+	生成公钥，在桌面右键打开Git Bash Here,输入
+	ssh-keygen -t rsa -C "邮箱"
+	找到本地文件对应的私钥，在GitHub网站
+❤❤在本地提交到远程仓库之前，先pull拉取一次，再push，避免在远程仓库发生冲突
+        拉取到本地发生了冲突，可以在本地解决了之后再上传
+
+一下简便的操作
+git remote add name 仓库http地址  --> git push name master
+git push origin -u master 建立GitHub远程仓库和本地仓库master分支的关系 
+	下次再使用的时候 git push 和 git pull
+
